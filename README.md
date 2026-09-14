@@ -37,7 +37,9 @@ Moving the deployment to Cloudflare Workers
 
 The app was built and shipped on Vercel first, then moved to Cloudflare Workers using OpenNext (@opennextjs/cloudflare with Wrangler). The project keeps the standard Next.js scripts alongside a separate set for the Workers build, preview and deploy, so both paths stay runnable.
 
-The move is not free: the build goes through an adapter rather than the framework's native target, configuration lives in Wrangler, and environment values become Worker bindings. It is the kind of change that is easy to underestimate and worth doing while the app is small.
+The deciding factor was cost, not performance. The client's hard requirement from the first conversation was a system with no monthly bill and no risk of a surprise charge as usage grew — that is why he had rejected SaaS in the first place. Cloudflare fit that constraint better for this workload, so the move was a business requirement driving an infrastructure decision rather than a technical preference.
+
+The change is not free either way: the build goes through an adapter rather than the framework's native target, configuration lives in Wrangler, and environment values become Worker bindings. It is the kind of migration that is easy to underestimate and much cheaper to do while the app is still small.
 
 Stock that moves from two directions
 
